@@ -1,0 +1,33 @@
+{
+    "name": "furious/furious-api-sdk",
+    "description": "Furious API client SDK",
+    "version": "1.0.0",
+    "keywords": [
+        "furious",
+        "php",
+        "sdk",
+        "api"
+    ],
+    "homepage": "https://www.furious-squad.com/",
+    "license": "Apache-2.0",
+    "authors": [
+        {
+            "name": "Furious",
+            "homepage": "https://www.furious-squad.com/"
+        }
+    ],
+    "require": {
+        "php": "^7.4",
+        "guzzlehttp/guzzle": "^7.9"
+    },
+    "require-dev": {
+        "phpunit/phpunit": "^9.6"
+    },
+    "autoload": {
+        "psr-4": {
+            "Furious\\FuriousApiSdk\\": "src/"
+        }
+    },
+    "minimum-stability": "stable",
+    "prefer-stable": true
+}
