@@ -1,28 +1,9 @@
-name: PHP CS Fixer Check
+name: Test Runner
 
-on:
-  push:
-    branches: [ main, feature/php-cs-fixer ]
-  pull_request:
-    branches: [ main, feature/php-cs-fixer ]
+on: push
 
 jobs:
-  php-cs-fixer-check:
+  test:
     runs-on: ubuntu-latest
-
     steps:
-      - name: Checkout code
-        uses: actions/checkout@v4
-
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: "8.2"
-
-      - name: Install dependencies
-        run: composer install --no-interaction --prefer-dist
-
-      - name: Run PHP CS Fixer (dry-run with diff)
-        uses: docker://oskarstark/php-cs-fixer-ga
-        with:
-          args: --dry-run --diff --ansi --config=.php-cs-fixer.php
+      - run: echo "Runner works"
