@@ -2,17 +2,12 @@
 
 namespace Furious\FuriousApiSdk\Query\Filter;
 
-
 class Greatest extends AbstractFieldFilter
 {
     protected const FILTER_OPERATOR = 'gt';
-    
+
     /**
-     * __construct
-     *
-     * @param  string $fieldName
-     * @param  string $fieldValue
-     * @return void
+     * __construct.
      */
     protected function __construct(string $fieldName, string $fieldValue)
     {
@@ -20,10 +15,8 @@ class Greatest extends AbstractFieldFilter
     }
 
     /**
-     * set
+     * set.
      *
-     * @param  string $fieldName
-     * @param  string $fieldValue
      * @return self
      */
     public static function set(string $fieldName, string $fieldValue)

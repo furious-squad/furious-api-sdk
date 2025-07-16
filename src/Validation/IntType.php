@@ -13,10 +13,10 @@ class IntType extends AbstractFieldType
 
     public function isValid(mixed $value)
     {
-        if(empty($value)) {
+        if (empty($value)) {
             return true;
         }
-        
+
         return is_int($value);
     }
 
