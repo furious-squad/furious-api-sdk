@@ -1,13 +1,13 @@
-name: PHP CS Fixer with PR Comment
+name: PHP CS Fixer Check
 
 on:
   push:
-    branches: [main, feature/php-cs-fixer]
+    branches: [ main, feature/php-cs-fixer ]
   pull_request:
-    branches: [main, feature/php-cs-fixer]
+    branches: [ main, feature/php-cs-fixer ]
 
 jobs:
-  php-cs-fixer-pr-comment:
+  php-cs-fixer-check:
     runs-on: ubuntu-latest
 
     steps:
@@ -22,9 +22,7 @@ jobs:
       - name: Install dependencies
         run: composer install --no-interaction --prefer-dist
 
-      - name: Run PHP CS Fixer with PR Comment
-        uses: docker://oskarstark/php-cs-fixer-pr-commenter
-        env:
-          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+      - name: Run PHP CS Fixer (dry-run with diff)
+        uses: docker://oskarstark/php-cs-fixer-ga
         with:
           args: --dry-run --diff --ansi --config=.php-cs-fixer.php
