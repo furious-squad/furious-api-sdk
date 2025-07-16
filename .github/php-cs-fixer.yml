@@ -1,0 +1,30 @@
+name: PHP CS Fixer with PR Comment
+
+on:
+  push:
+    branches: [main, feature/php-cs-fixer]
+  pull_request:
+    branches: [main, feature/php-cs-fixer]
+
+jobs:
+  php-cs-fixer-pr-comment:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup PHP
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: "8.2"
+
+      - name: Install dependencies
+        run: composer install --no-interaction --prefer-dist
+
+      - name: Run PHP CS Fixer with PR Comment
+        uses: docker://oskarstark/php-cs-fixer-pr-commenter
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        with:
+          args: --dry-run --diff --ansi --config=.php-cs-fixer.php

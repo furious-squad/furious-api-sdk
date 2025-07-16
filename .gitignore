@@ -1,3 +1,5 @@
 vendor/
 .env.dist
 composer.lock
+.php_cs.cache
+.php-cs-fixer.cache
