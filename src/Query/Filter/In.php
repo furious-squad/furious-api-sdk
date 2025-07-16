@@ -2,29 +2,24 @@
 
 namespace Furious\FuriousApiSdk\Query\Filter;
 
-
 class In extends AbstractFieldFilter
 {
     protected const FILTER_OPERATOR = 'in';
-    
+
     /**
-     * __construct
+     * __construct.
      *
-     * @param  string $fieldName
-     * @param  string $fieldValue
-     * @return void
+     * @param string $fieldValue
      */
     protected function __construct(string $fieldName, array $fieldValue)
     {
         parent::__construct($fieldName, self::FILTER_OPERATOR, $fieldValue);
     }
-    
+
     /**
-     * set
+     * set.
      *
-     * @param  string $fieldName
-     * @param  string $fieldValue
-     * @return void
+     * @param string $fieldValue
      */
     public static function set(string $fieldName, array $fieldValue)
     {

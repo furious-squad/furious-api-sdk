@@ -2,6 +2,4 @@
 
 namespace Furious\FuriousApiSdk\Resource;
 
-interface ResourceInterface 
-{
-}
+interface ResourceInterface {}

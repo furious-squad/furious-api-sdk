@@ -2,27 +2,22 @@
 
 namespace Furious\FuriousApiSdk\Query\Order;
 
-
 abstract class AbstractFieldOrder
 {
     protected string $fieldName;
     protected string $fieldOrderDirection;
-        
+
     /**
-     * __construct
-     *
-     * @param  string $fieldName
-     * @param  string $fieldOrderDirection
-     * @return void
+     * __construct.
      */
     protected function __construct(string $fieldName, string $fieldOrderDirection)
     {
-        $this->fieldName            = $fieldName;
-        $this->fieldOrderDirection  = $fieldOrderDirection;
+        $this->fieldName = $fieldName;
+        $this->fieldOrderDirection = $fieldOrderDirection;
     }
-    
+
     /**
-     * getGraphQLFormat return ordering field as a GraphQLFormatted string
+     * getGraphQLFormat return ordering field as a GraphQLFormatted string.
      *
      * @return string
      */

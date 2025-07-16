@@ -2,27 +2,20 @@
 
 namespace Furious\FuriousApiSdk\Query\Order;
 
-
 class OrderAsc extends AbstractFieldOrder
 {
     private const ORDER_FIELD_DIRECTION = 'asc';
-    
+
     /**
-     * __construct
-     *
-     * @param  string $fieldName
-     * @return void
+     * __construct.
      */
     protected function __construct(string $fieldName)
     {
         parent::__construct($fieldName, self::ORDER_FIELD_DIRECTION);
     }
-    
+
     /**
-     * field
-     *
-     * @param  string $fieldName
-     * @return void
+     * field.
      */
     public static function field(string $fieldName)
     {

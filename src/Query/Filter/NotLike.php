@@ -2,29 +2,20 @@
 
 namespace Furious\FuriousApiSdk\Query\Filter;
 
-
 class NotLike extends AbstractFieldFilter
 {
     protected const FILTER_OPERATOR = 'nlike';
-    
+
     /**
-     * __construct
-     *
-     * @param  string $fieldName
-     * @param  string $fieldValue
-     * @return void
+     * __construct.
      */
     protected function __construct(string $fieldName, string $fieldValue)
     {
         parent::__construct($fieldName, self::FILTER_OPERATOR, $fieldValue);
     }
-    
+
     /**
-     * set
-     *
-     * @param  string $fieldName
-     * @param  string $fieldValue
-     * @return void
+     * set.
      */
     public static function set(string $fieldName, string $fieldValue)
     {
