@@ -22,7 +22,6 @@ jobs:
       - name: Install dependencies
         run: composer install --no-interaction --prefer-dist
 
-      - name: Run PHP CS Fixer (dry-run with diff)
-        uses: docker://oskarstark/php-cs-fixer-ga
-        with:
-          args: --dry-run --diff --ansi --config=.php-cs-fixer.php
+      - name: Run PHP CS Fixer (fail on diff)
+        run: |
+          vendor/bin/php-cs-fixer fix --dry-run --diff --ansi --config=.php-cs-fixer.php --verbose
