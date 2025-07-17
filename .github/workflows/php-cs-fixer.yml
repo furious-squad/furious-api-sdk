@@ -6,6 +6,9 @@ on:
   pull_request:
     branches: [ main, feature/php-cs-fixer ]
 
+permissions:
+  contents: read
+
 jobs:
   php-cs-fixer-check:
     runs-on: ubuntu-latest
