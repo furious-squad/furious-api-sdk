@@ -54,7 +54,12 @@ jobs:
         # Runs Snyk Code (SAST) analysis and uploads result into GitHub.
         # Use || true to not fail the pipeline
       - name: Snyk Code test
-        run: snyk code test --sarif > snyk-code.sarif # || true
+        run: snyk code test --sarif > snyk-code.sarif || true
+
+      - name: Check SARIF file
+        run: |
+            echo "==== SARIF File ===="
+            cat snyk-code.sarif || echo "SARIF file not found!"
 
         # Runs Snyk Open Source (SCA) analysis and uploads result to Snyk.
       - name: Snyk Open Source monitor
