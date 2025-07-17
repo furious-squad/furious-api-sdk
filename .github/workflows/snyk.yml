@@ -9,16 +9,21 @@ on:
 jobs:
   snyk:
     runs-on: ubuntu-latest
+    env:
+      SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
     steps:
-      - uses: actions/checkout@master
-      - name: Run Snyk to check for vulnerabilities
-        uses: snyk/actions/php@master
-        continue-on-error: true # To make sure that SARIF upload gets called
-        env:
-          SNYK_TOKEN: ${{ secrets.SNYK_TOKEN }}
+      - uses: actions/checkout@v4
+
+      - name: Install PHP dependencies (composer install)
+        run: composer install --no-interaction --no-progress
+
+      - name: Snyk Open Source monitor on composer.lock
+        run: snyk monitor --file=composer.lock --project-name=furious-api-sdk
+
+      - name: Snyk Code test on PHP sources
+        run: snyk code test --sarif --source=src > snyk-code.sarif || true
+
+      - name: Upload Snyk Code SARIF result to GitHub
+        uses: github/codeql-action/upload-sarif@v3
         with:
-          args: --sarif-file-output=snyk.sarif
-      - name: Upload result to GitHub Code Scanning
-        uses: github/codeql-action/upload-sarif@v2
-        with:
-          sarif_file: snyk.sarif
+          sarif_file: snyk-code.sarif
