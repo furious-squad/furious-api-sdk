@@ -19,14 +19,15 @@ jobs:
                   php-version: "8.2"
 
             - name: Cache Composer dependencies
-              uses: actions/cache@v2
+              uses: actions/cache@v3
               with:
                   path: vendor
                   key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
-                  restore-keys: ${{ runner.os }}-composer-
+                  restore-keys: |
+                      ${{ runner.os }}-composer-
 
             - name: Install dependencies
               run: composer install --prefer-dist --no-progress --no-suggest
 
-            - name: Run tests
+            - name: Run PHPUnit tests
               run: vendor/bin/phpunit ./tests
