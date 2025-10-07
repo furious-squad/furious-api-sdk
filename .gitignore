@@ -1,5 +1,7 @@
 vendor/
-.env.dist
+.env
+.DS_Store
+.phpunit.result.cache
 composer.lock
 .php_cs.cache
 .php-cs-fixer.cache

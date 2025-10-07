@@ -191,3 +191,12 @@ All SDK operations may throw:
 * `Furious\FuriousApiSdk\Exception\ApiException`
 
 Use try/catch blocks to handle them gracefully.
+
+
+---
+
+## Run unit tests
+
+```
+vendor/bin/phpunit ./tests
+```
