@@ -2,6 +2,7 @@
 
 [![Latest Packagist Version](https://img.shields.io/packagist/v/furious-squad/furious-api-sdk?logo=github&logoColor=white&style=flat-square)](https://packagist.org/packages/furious-squad/furious-api-sdk)
 [![Total Downloads](https://img.shields.io/packagist/dt/furious-squad/furious-api-sdk.svg?logo=github&logoColor=white&style=flat-square)](https://packagist.org/packages/furious-squad/furious-api-sdk)
+![Tests PHPUnit](https://github.com/furious-squad/furious-api-sdk/actions/workflows/phpunit.yml/badge.svg)
 
 The **Furious PHP SDK** provides convenient access to the [Furious ERP API](https://furious-squad.com) from PHP applications. It is designed for developers building integrations with Furious ERP features such as CRM, project tracking, time management, HR, accounting, and more.
 
