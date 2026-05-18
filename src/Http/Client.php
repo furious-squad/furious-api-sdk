@@ -7,6 +7,7 @@ use Furious\FuriousApiSdk\Model\Config;
 use Furious\FuriousApiSdk\Token\JwtToken;
 use Furious\FuriousApiSdk\Token\TokenInterface;
 use GuzzleHttp\Client as GuzzleClient;
+use GuzzleHttp\Promise\Utils;
 use GuzzleHttp\Exception\RequestException;
 
 class Client
