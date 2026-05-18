@@ -114,6 +114,29 @@ abstract class AbstractResource
     }
 
     /**
+     * Recherche batch de ressources selon des critères.
+     *
+     * @param array $searches listes de recherches à effectuer
+     *
+     * @return array résultats des recherches
+     */
+    public function searchBatch(array $searches): array
+    {
+        $endpoints = [];
+        foreach ($searches as $key => $search) {
+            $endpoints[$key] = $this->buildSearchString(
+                $search['fields'],
+                $search['filters'],
+                $search['orders'],
+                $search['offset'] ?? self::DEFAULT_SEARCH_OFFSET,
+                $search['limit']  ?? self::DEFAULT_SEARCH_LIMIT
+            );
+        }
+
+        return $this->client->getBatch($endpoints);
+    }
+
+    /**
      * Construit l'URI de recherche GraphQL pour la ressource.
      *
      * @param array $fields  champs à retourner dans la requête

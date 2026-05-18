@@ -57,6 +57,41 @@ class Client
     }
 
     /**
+     * getBatch.
+     *
+     * @return array
+     */
+    public function getBatch(array $endpoints): array
+    {
+        $token   = $this->config->getToken();
+        $headers = [];
+
+        if ($token instanceof JwtToken) {
+            $headers['F-Auth-Token'] = $token->getApiToken();
+        }
+
+        $promises = [];
+        foreach ($endpoints as $key => $endpoint) {
+            $promises[$key] = $this->client->getAsync($endpoint, [
+                'headers' => $headers,
+            ]);
+        }
+
+        $results   = [];
+        $settled   = \GuzzleHttp\Promise\Utils::settle($promises)->wait();
+
+        foreach ($settled as $key => $result) {
+            if ($result['state'] === 'fulfilled') {
+                $results[$key] = json_decode((string) $result['value']->getBody(), true);
+            } else {
+                $results[$key] = null;
+            }
+        }
+
+        return $results;
+    }
+
+    /**
      * post.
      *
      * @return array
