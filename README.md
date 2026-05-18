@@ -88,6 +88,49 @@ $results = $absence->search(
 );
 ```
 
+### Batch Search (parallel queries)
+ 
+`searchBatch` fires multiple search queries **in parallel** using Guzzle promises, significantly reducing total response time compared to sequential calls.
+ 
+Each entry in the batch is identified by a key of your choice and accepts the same parameters as `search`.
+
+```php
+$postit = $sdk->getResource(Postit::class);
+ 
+$today        = (new \DateTime())->format('Y-m-d');
+$yesterday    = (new \DateTime())->sub(new \DateInterval('P1D'))->format('Y-m-d');
+$sixMonthsAgo = (new \DateTime())->sub(new \DateInterval('P6M'))->format('Y-m-d');
+
+$baseFilters = [
+    Equal::set('type', 'crm'),
+    Equal::set('id_item', '12345'),
+    NotEqual::set('status', '0'),
+];
+ 
+$results = $postit->searchBatch([
+  'future' => [
+      'fields'  => ['id'],
+      'filters' => array_merge($baseFilters, [
+          Greatest::set('date', $today),
+      ]),
+      'orders' => [],
+      'limit'  => 1,
+  ],
+  'past' => [
+      'fields'  => ['id'],
+      'filters' => array_merge($baseFilters, [
+          LessOrEqual::set('date', $yesterday),
+          Greatest::set('date', $sixMonthsAgo),
+      ]),
+      'orders' => [],
+      'limit'  => 1,
+  ]
+];
+
+$futurCount = $results['future']['meta']['totalElementsWithFilters'] ?? 0;
+$pastCount  = $results['past']['meta']['totalElementsWithFilters']   ?? 0;
+```
+
 ### Create a Resource
 
 ```php
