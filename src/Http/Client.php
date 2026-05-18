@@ -59,12 +59,10 @@ class Client
 
     /**
      * getBatch.
-     *
-     * @return array
      */
     public function getBatch(array $endpoints): array
     {
-        $token   = $this->config->getToken();
+        $token = $this->config->getToken();
         $headers = [];
 
         if ($token instanceof JwtToken) {
@@ -78,11 +76,11 @@ class Client
             ]);
         }
 
-        $results   = [];
-        $settled   = \GuzzleHttp\Promise\Utils::settle($promises)->wait();
+        $results = [];
+        $settled = Utils::settle($promises)->wait();
 
         foreach ($settled as $key => $result) {
-            if ($result['state'] === 'fulfilled') {
+            if ('fulfilled' === $result['state']) {
                 $results[$key] = json_decode((string) $result['value']->getBody(), true);
             } else {
                 $results[$key] = null;

@@ -129,7 +129,7 @@ abstract class AbstractResource
                 $search['filters'],
                 $search['orders'],
                 $search['offset'] ?? self::DEFAULT_SEARCH_OFFSET,
-                $search['limit']  ?? self::DEFAULT_SEARCH_LIMIT
+                $search['limit'] ?? self::DEFAULT_SEARCH_LIMIT
             );
         }
 
