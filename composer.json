@@ -1,7 +1,7 @@
 {
     "name": "furious-squad/furious-api-sdk",
     "description": "Furious API client SDK",
-    "version": "1.0.4",
+    "version": "1.1.0",
     "keywords": [
         "furious",
         "php",
