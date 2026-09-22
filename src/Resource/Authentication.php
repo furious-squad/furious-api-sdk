@@ -20,20 +20,6 @@ class Authentication extends AbstractResource implements ResourceInterface
 
     protected const API_ALLOWED_ACTIONS = [self::API_ACTION_AUTH];
 
-    /**
-     * Authenticates the user using provided credentials.
-     *
-     * Sends a POST request to the API with the specified credentials and, if successful,
-     * returns a `JwtToken` instance. If authentication fails, an `ApiException` is thrown
-     * with the error messages returned by the API.
-     *
-     * @param array $fields Associative array containing user credentials.
-     *                      Expected keys: 'username' and 'password'.
-     *
-     * @return JwtToken the authenticated JWT token on success
-     *
-     * @throws ApiException if authentication fails or API returns an error
-     */
     public function authenticate(array $fields)
     {
         $body = [
