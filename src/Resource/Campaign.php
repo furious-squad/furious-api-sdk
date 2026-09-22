@@ -2,12 +2,8 @@
 
 namespace Furious\FuriousApiSdk\Resource;
 
-use Furious\FuriousApiSdk\Resource\ResourceInterface;
-use Furious\FuriousApiSdk\Resource\AbstractResource;
-
 /**
- * Class Campaign
- * @package Furious\FuriousApiSdk\Resource
+ * Class Campaign.
  *
  * @method static Campaign create(array $fields = [])
  * @method static Campaign search(array $fields = [])
@@ -15,11 +11,11 @@ use Furious\FuriousApiSdk\Resource\AbstractResource;
  */
 class Campaign extends AbstractResource implements ResourceInterface
 {
-    protected const API_NAME        = "Campaign";
-    protected const CATEGORY_NAME   = "";
-    protected const GRAPH_API_NAME  = "Campaign";
-    
-    protected const API_URI         = "campaign";
+    protected const API_NAME = 'Campaign';
+    protected const CATEGORY_NAME = '';
+    protected const GRAPH_API_NAME = 'Campaign';
 
-    protected const API_ALLOWED_ACTIONS = [ self::API_ACTION_SEARCH, self::API_ACTION_UPDATE];
+    protected const API_URI = 'campaign';
+
+    protected const API_ALLOWED_ACTIONS = [self::API_ACTION_SEARCH, self::API_ACTION_UPDATE];
 }
