@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.2](https://github.com/furious-squad/furious-api-sdk/releases/tag/1.2.2) - 2026-11-02
+
+### Fixed
+
+- Restored `AbstractResource::searchBatch()` (added in 1.1.0), which was accidentally removed in 1.2.0 when the resources were regenerated. Consumers calling it (Board postit counters) failed with "Call to undefined method" on 1.2.0 and 1.2.1.
+- Restored the `delete` action in `Postit::API_ALLOWED_ACTIONS`, also dropped in 1.2.0.
+- Added unit tests on `searchBatch()` to prevent another silent removal.
+
 ## [1.2.1](https://github.com/furious-squad/furious-api-sdk/releases/tag/1.2.1) - 2026-11-02
 
 ### Fixed
