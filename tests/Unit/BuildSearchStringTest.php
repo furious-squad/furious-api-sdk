@@ -51,7 +51,7 @@ class BuildSearchStringTest extends TestCase
         $orders = [];
 
         $actualQuery = $absence->buildSearchString($fields, $filters, $orders);
-        $expectedQuery = 'absence?query={Absence(limit:20,offset:0){id,name}}';
+        $expectedQuery = 'absence/?query={Absence(limit:20,offset:0){id,name}}';
 
         $this->assertSame($expectedQuery, $actualQuery);
     }
@@ -71,7 +71,7 @@ class BuildSearchStringTest extends TestCase
         $orders = [];
 
         $actualQuery = $absence->buildSearchString($fields, $filters, $orders);
-        $expectedQuery = 'absence?query={Absence(limit:20,offset:0){id,name,start_date,end_date,status}}';
+        $expectedQuery = 'absence/?query={Absence(limit:20,offset:0){id,name,start_date,end_date,status}}';
 
         $this->assertSame($expectedQuery, $actualQuery);
     }
@@ -91,7 +91,7 @@ class BuildSearchStringTest extends TestCase
         $orders = [];
 
         $actualQuery = $absence->buildSearchString($fields, $filters, $orders);
-        $expectedQuery = 'absence?query={Absence(limit:20,offset:0,filter:{status:{eq:"approved"}}){id,status}}';
+        $expectedQuery = 'absence/?query={Absence(limit:20,offset:0,filter:{status:{eq:"approved"}}){id,status}}';
 
         $this->assertSame($expectedQuery, $actualQuery);
     }
@@ -114,7 +114,7 @@ class BuildSearchStringTest extends TestCase
         $orders = [];
 
         $actualQuery = $absence->buildSearchString($fields, $filters, $orders);
-        $expectedQuery = 'absence?query={Absence(limit:20,offset:0,filter:{pseudo:{eq:"madeline"},status:{eq:"pending"}}){id,pseudo,start_date}}';
+        $expectedQuery = 'absence/?query={Absence(limit:20,offset:0,filter:{pseudo:{eq:"madeline"},status:{eq:"pending"}}){id,pseudo,start_date}}';
 
         $this->assertSame($expectedQuery, $actualQuery);
     }
@@ -134,7 +134,7 @@ class BuildSearchStringTest extends TestCase
         $orders = [OrderAsc::field('start_date')];
 
         $actualQuery = $absence->buildSearchString($fields, $filters, $orders);
-        $expectedQuery = 'absence?query={Absence(limit:20,offset:0,order:[{start_date:asc}]){id,start_date}}';
+        $expectedQuery = 'absence/?query={Absence(limit:20,offset:0,order:[{start_date:asc}]){id,start_date}}';
 
         $this->assertSame($expectedQuery, $actualQuery);
     }
@@ -157,7 +157,7 @@ class BuildSearchStringTest extends TestCase
         ];
 
         $actualQuery = $absence->buildSearchString($fields, $filters, $orders);
-        $expectedQuery = 'absence?query={Absence(limit:20,offset:0,order:[{start_date:asc},{end_date:desc}]){id,start_date,end_date}}';
+        $expectedQuery = 'absence/?query={Absence(limit:20,offset:0,order:[{start_date:asc},{end_date:desc}]){id,start_date,end_date}}';
 
         $this->assertSame($expectedQuery, $actualQuery);
     }
@@ -177,7 +177,7 @@ class BuildSearchStringTest extends TestCase
         $orders = [];
 
         $actualQuery = $absence->buildSearchString($fields, $filters, $orders);
-        $expectedQuery = 'absence?query={Absence(limit:20,offset:0){}}';
+        $expectedQuery = 'absence/?query={Absence(limit:20,offset:0){}}';
 
         $this->assertSame($expectedQuery, $actualQuery);
     }
@@ -197,7 +197,7 @@ class BuildSearchStringTest extends TestCase
         $orders = [];
 
         $actualQuery = $absence->buildSearchString($fields, $filters, $orders);
-        $expectedQuery = 'absence?query={Absence(limit:20,offset:0){id,name}}';
+        $expectedQuery = 'absence/?query={Absence(limit:20,offset:0){id,name}}';
 
         $this->assertSame($expectedQuery, $actualQuery);
     }
@@ -217,7 +217,7 @@ class BuildSearchStringTest extends TestCase
         $orders = [123];
 
         $actualQuery = $absence->buildSearchString($fields, $filters, $orders);
-        $expectedQuery = 'absence?query={Absence(limit:20,offset:0){id}}';
+        $expectedQuery = 'absence/?query={Absence(limit:20,offset:0){id}}';
 
         $this->assertSame($expectedQuery, $actualQuery);
     }
@@ -239,7 +239,7 @@ class BuildSearchStringTest extends TestCase
         $customLimit = 50;
 
         $actualQuery = $absence->buildSearchString($fields, $filters, $orders, $customOffset, $customLimit);
-        $expectedQuery = 'absence?query={Absence(limit:50,offset:5){id,name}}';
+        $expectedQuery = 'absence/?query={Absence(limit:50,offset:5){id,name}}';
 
         $this->assertSame($expectedQuery, $actualQuery);
     }
@@ -259,7 +259,7 @@ class BuildSearchStringTest extends TestCase
         $orders = [null, OrderAsc::field('start_date'), null];
 
         $actualQuery = $absence->buildSearchString($fields, $filters, $orders);
-        $expectedQuery = 'absence?query={Absence(limit:20,offset:0,filter:{pseudo:{eq:"madeline"}},order:[{start_date:asc}]){id,name}}';
+        $expectedQuery = 'absence/?query={Absence(limit:20,offset:0,filter:{pseudo:{eq:"madeline"}},order:[{start_date:asc}]){id,name}}';
 
         $this->assertSame($expectedQuery, $actualQuery);
     }

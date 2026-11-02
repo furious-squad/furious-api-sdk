@@ -156,7 +156,8 @@ abstract class AbstractResource
             }
         }
 
-        $uri = static::API_URI.'?query={'.static::GRAPH_API_NAME.'(%PARAMETERS%){%FIELDS%}}';
+        // Slash final : sans lui, Apache répond 301 (DirectorySlash) et chaque recherche coûte deux requêtes
+        $uri = static::API_URI.'/?query={'.static::GRAPH_API_NAME.'(%PARAMETERS%){%FIELDS%}}';
         $uri = str_replace('%PARAMETERS%', implode(',', $parameters), $uri);
         $uri = str_replace('%FIELDS%', implode(',', $fields), $uri);
 

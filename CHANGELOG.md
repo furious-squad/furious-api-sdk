@@ -2,6 +2,12 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.1](https://github.com/furious-squad/furious-api-sdk/releases/tag/1.2.1) - 2026-11-02
+
+### Fixed
+
+- `buildSearchString()` now adds a trailing slash before the query string (`postit/?query=...`). Without it, Apache answered every `search()` / `searchBatch()` call with a 301 redirect, doubling the number of HTTP requests.
+
 ## [1.2.0](https://github.com/furious-squad/furious-api-sdk/releases/tag/1.2.0) - 2026-09-22
 
 ### Added
