@@ -45,12 +45,12 @@ class Client
                 ];
             }
 
-            $response = $this->client->post($endpoint, $options);
+            $response = $this->client->get($endpoint, $options);
 
             return json_decode((string) $response->getBody(), true);
         } catch (RequestException $e) {
             $response = $e->getResponse();
-            $statusCode = $response ? $response->getStatusCode() : 'No response';
+            $statusCode = $response ? $response->getStatusCode() : 0;
             $errorBody = $response ? $response->getBody()->getContents() : 'No body';
 
             throw new ApiException($errorBody, $statusCode);
@@ -112,7 +112,7 @@ class Client
             return json_decode((string) $response->getBody(), true);
         } catch (RequestException $e) {
             $response = $e->getResponse();
-            $statusCode = $response ? $response->getStatusCode() : 'No response';
+            $statusCode = $response ? $response->getStatusCode() : 0;
             $errorBody = $response ? $response->getBody()->getContents() : 'No body';
 
             throw new ApiException($errorBody, $statusCode);
@@ -141,7 +141,7 @@ class Client
             return json_decode((string) $response->getBody(), true);
         } catch (RequestException $e) {
             $response = $e->getResponse();
-            $statusCode = $response ? $response->getStatusCode() : 'No response';
+            $statusCode = $response ? $response->getStatusCode() : 0;
             $errorBody = $response ? $response->getBody()->getContents() : 'No body';
 
             throw new ApiException($errorBody, $statusCode);
@@ -170,7 +170,7 @@ class Client
             return json_decode((string) $response->getBody(), true);
         } catch (RequestException $e) {
             $response = $e->getResponse();
-            $statusCode = $response ? $response->getStatusCode() : 'No response';
+            $statusCode = $response ? $response->getStatusCode() : 0;
             $errorBody = $response ? $response->getBody()->getContents() : 'No body';
 
             throw new ApiException($errorBody, $statusCode);
