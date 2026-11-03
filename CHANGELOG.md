@@ -2,6 +2,17 @@
 
 All notable changes to this project will be documented in this file.
 
+## [1.2.3](https://github.com/furious-squad/furious-api-sdk/releases/tag/1.2.3) - 2026-11-03
+
+### Fixed
+
+- Single-resource searches now use HTTP GET, consistently with batch searches. This fixes searches failing on canonical URLs introduced in 1.2.1, where an unintended POST was no longer converted to GET by an HTTP redirect.
+- Request exceptions without an HTTP response now use integer code `0`, preventing a `TypeError` from masking the failure.
+
+### Tests
+
+- Added offline regression coverage for HTTP methods, search URLs, authentication headers, JSON payloads, batch results and request exceptions.
+
 ## [1.2.2](https://github.com/furious-squad/furious-api-sdk/releases/tag/1.2.2) - 2026-11-02
 
 ### Fixed
